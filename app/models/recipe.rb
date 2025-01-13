@@ -3,5 +3,6 @@ class Recipe < ApplicationRecord
 
   validates :description, presence: true
   validates :name, uniqueness: true, presence: true
-  validates :rating, numericality: { in: [0..5] }
+  # validates :rating, numericality: { in: [0..5] }
+  validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
 end
