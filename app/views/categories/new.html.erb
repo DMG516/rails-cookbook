@@ -3,7 +3,7 @@
     <h1> Add a new Category</h1>
     <%= simple_form_for @category do |f|%>
     <%= f.input :name, placeholder: 'The category name', label: false %>
-    <%= f.input :image_url, as: :file, label: "Photo" %>
+    <%= f.input :photo, as: :file, label: "Photo" %>
     <%= f.submit class: "btn btn-warning" %>
     <% end %>
   </div>
