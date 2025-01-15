@@ -1,5 +1,10 @@
-<h1> Create New Category</h1>
-<%= simple_form_for @category do |f|%>
-<%= f.input :name %>
-<%= f.submit class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <div class="form_new mt-2">
+    <h1> Add a new Category</h1>
+    <%= simple_form_for @category do |f|%>
+    <%= f.input :name, placeholder: 'The category name', label: false %>
+    <%= f.input :image_url, as: :file, label: "Photo" %>
+    <%= f.submit class: "btn btn-warning" %>
+    <% end %>
+  </div>
+</div>

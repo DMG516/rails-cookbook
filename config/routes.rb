@@ -7,8 +7,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :categories, only: [:index, :show, :new, :update, :create, :destroy]
-  resources :recipes, only: [:index, :show, :new, :update]
+  root "categories#index"
+  resources :categories, only: [:index, :show, :new, :create] do
+    resources :bookmarks, only: [:new, :create]
+  end
+  # resources :recipes, only: [:index, :show, :new, :update]
+  resources :bookmarks, only: [:destroy]
 
   # get '/categories/:id', to: 'categories#show', as: :category
 

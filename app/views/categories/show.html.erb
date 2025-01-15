@@ -1,3 +1,45 @@
-<h1><%= @category.name %></h1>
+<div class='banner' style="background-image: url(<%= image_path "banner.png" %>)">
+  <div>
+    <h1><%= @category.name %></h1>
+  </div>
+</div>
 
+<div class='container'>
+  <div class='info-top'>
+    <h3> Recipes</h3>
+    <%= link_to 'Add a Recipe', new_category_bookmark_path(@category), class: 'btn btn-warning'%>
+  </div>
 
+  <div class='cards'>
+    <% @category.bookmarks.each do |bookmark| %>
+    <div class="card-trip">
+
+    <%= link_to bookmark_path(bookmark),
+    data: { turbo_method: :delete,
+            turbo_confirm: "Are you sure?"}, class: 'btn-delete' do %>
+
+    <i class="fa-solid fa-trash"></i>
+
+    <% end %>
+      <img src="<%= bookmark.recipe.image_url %>" alt="recipe image">
+
+      <div class="care-trip-description">
+        <h2><%= bookmark.recipe.name %></h2>
+        <p><%= bookmark.recipe.description.truncate(200) %></p>
+      </div>
+
+      <div class="card-trip-info">
+        <div>
+         <i class="fa-solid fa-quote-left"></i> <%= bookmark.comment %>
+        </div>
+
+        <div>
+          <%= bookmark.recipe.rating %> <%= '⭐️' * bookmark.recipe.rating %>
+        </div>
+      </div>
+
+    </div>
+    <% end %>
+  </div>
+
+</div>
